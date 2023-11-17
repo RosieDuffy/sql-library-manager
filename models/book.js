@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Book.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,7 +37,14 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       genre: DataTypes.STRING,
-      year: DataTypes.INTEGER,
+      year: {
+        type: DataTypes.INTEGER,
+        validate: {
+          isInt: {
+            msg: "Valid date is required",
+          },
+        },
+      },
     },
     {
       sequelize,

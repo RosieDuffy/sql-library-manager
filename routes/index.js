@@ -4,8 +4,7 @@ const Book = require("../models").Book;
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
-  const books = await Book.findAll();
-  res.json(books);
+   res.redirect("/books");
 });
 
 module.exports = router;
